@@ -1,5 +1,9 @@
+from django.http import JsonResponse
 from django.shortcuts import render
-from django.http import HttpResponse
+
 
 def buttons(request):
-	return HttpResponse("안녕하세요 친구들!")
+	return JsonResponse({
+		'type': 'buttons',
+		'buttons': ["코스피", "코스닥"]
+		})
