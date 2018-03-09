@@ -17,7 +17,7 @@ def message(request):
 	json_str = ((request.body).decode('utf-8'))
 	json_data = json.loads(json_str)
 	market_name = json_data['content']
-	# index = get_stock_index(market_name)
+	index = get_stock_index(market_name)
 
 
 	return JsonResponse({
