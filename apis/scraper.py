@@ -10,7 +10,7 @@ def get_stock_index(request):
 	"""Return requested KOSPI/KOSDAQ Index by scraping from KRX.co.kr"""
 
 	# headers = {"User-Agent": "Mozilla/5.0"}
-	req = requests.get("http://www.krx.co.kr/main/main.jsp", headers = headers)
+	req = requests.get("http://www.krx.co.kr/main/main.jsp")
 	html = req.text
 	soup = BeautifulSoup(html, "html.parser")
 	index = soup.findAll("span", {"class": "index-price"})
