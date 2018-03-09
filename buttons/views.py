@@ -61,10 +61,5 @@ def create_index(market_name, index):
 def get_index(market_name):
 	"""Return index of given market_name from DB"""
 
-	if market_name == '코스피':
-		value = 1
-	else:
-		value = 2
-
-	return Index.objects.get(pk=value)
+	return Index.objects.get(market_name=market_name).index
 
