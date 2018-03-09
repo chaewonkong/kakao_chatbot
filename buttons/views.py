@@ -5,7 +5,7 @@ import requests
 
 # Django App
 from buttons.models import Index
-from django.http import JsonResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 import json
@@ -44,6 +44,8 @@ def scraper(request):
 
 	create_index('코스피', get_stock_index('코스피'))
 	create_index('코스닥', get_stock_index('코스닥'))
+
+	return HttpResponse("크롤링이 진행 중입니다~!!")
 
 
 def create_index(market_name, index):
