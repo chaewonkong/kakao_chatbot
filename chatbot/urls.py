@@ -20,7 +20,7 @@ from buttons import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('keyboard', views.buttons),
-    path('message', views.message),
-    path('scraper/', views.scraper),
+    path(r'^keyboard/', views.buttons),
+    path(r'^message', views.message),
+    path(r'^scraper/', views.scraper),
 ]
