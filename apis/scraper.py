@@ -15,7 +15,7 @@ def get_stock_index(request):
 	soup = BeautifulSoup(html, "html.parser")
 	index = soup.findAll("span", {"class": "index-price"})
 
-	if request == 'KOSPI':
+	if request == '코스피':
 		index = index[1].get_text()
 	else:
 		index = index[3].get_text()
