@@ -69,10 +69,10 @@ def scraper(request):
 	return HttpResponse("크롤링이 진행 중입니다~!!")
 
 
-def create_index(market_name, index):
+def create_index(name, index):
 	"""Create and save index with market_name in DB"""
 	Index.objects.create(
-		market_name = market_name,
+		name = market_name,
 		index = index
 		)
 
@@ -80,8 +80,8 @@ def create_index(market_name, index):
 def get_index():
 	"""Return index of given market_name from DB"""
 
-	kospi = Index.objects.get(market_name='코스피').index
-	kosdaq = Index.objects.get(market_name='코스닥').index
+	kospi = Index.objects.get(name='코스피').index
+	kosdaq = Index.objects.get(name='코스닥').index
 
 	return [kospi, kosdaq]
 
