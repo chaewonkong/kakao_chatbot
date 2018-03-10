@@ -37,16 +37,22 @@ def message(request):
 				'buttons': ["코스피/코스닥 지수", "종목 검색"]
 				}
 			})
+
 	elif action == "종목 검색"
 		return JsonResponse({
 			'message': {
 				'text': '검색하고자 하는 회사명을 입력하세요'
 				}
 			})
-	else: # 사용자가 종목을 검색한 경우
+
+	else: # Return specific stock price and keyboard to users
 		return JsonResponse({
 			'message': {
 				'text': action + '의 현재가(종가) 입니다:\n\n' + index
+				},
+			'keyboard':{
+				'type': 'buttons',
+				'buttons': ["코스피/코스닥 지수", "종목 검색"]
 				}
 			})
 
