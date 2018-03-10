@@ -35,4 +35,10 @@ index[5] = 'KRX 300'
 
 
 def get_stock_price(request):
-	return request
+	""" Return Stock price of the requested company"""
+
+	req =  #하필 쉬는날이네
+
+	pirce = ''
+
+	return price
