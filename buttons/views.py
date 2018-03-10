@@ -23,24 +23,30 @@ def buttons(request):
 def message(request):
 	json_str = ((request.body).decode('utf-8'))
 	json_data = json.loads(json_str)
-	menu = json_data['content']
+	action = json_data['content']
 	index = get_index()
 
-	if menu == "코스피/코스닥 지수":
+	if action == "코스피/코스닥 지수":
 		return JsonResponse({
 			'message': {
-				'text':  'KOSPI의 지수입니다: \n\n' + index[0] + '\n\n ------------\n\n'
-						'KOSDAQ의 지수입니다: \n\n' + index[1]
+				'text':  '#KOSPI의 지수 입니다: \n\n' + index[0] + '\n\n-----------------------\n\n'
+						'#KOSDAQ의 지수 입니다: \n\n' + index[1]
 				},
 			'keyboard': {
 				'type': 'buttons',
 				'buttons': ["코스피/코스닥 지수", "종목 검색"]
 				}
 			})
-	else:
+	elif action == "종목 검색"
 		return JsonResponse({
 			'message': {
 				'text': '검색하고자 하는 회사명을 입력하세요'
+				}
+			})
+	else: # 사용자가 종목을 검색한 경우
+		return JsonResponse({
+			'message': {
+				'text': action + '의 현재가(종가) 입니다:\n\n' + index
 				}
 			})
 
