@@ -29,7 +29,8 @@ def message(request):
 	if menu == "코스피/코스닥 지수":
 		return JsonResponse({
 			'message': {
-				'text':  'KOSPI의 지수입니다: \n\n' + index[0] + '\n\nKOSDAQ의 지수입니다: \n\n' + index[1]
+				'text':  'KOSPI의 지수입니다: \n\n' + index[0] + '\n\n ------------\n\n'
+						'KOSDAQ의 지수입니다: \n\n' + index[1]
 				},
 			'keyboard': {
 				'type': 'buttons',
