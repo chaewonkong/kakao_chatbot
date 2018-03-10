@@ -15,7 +15,7 @@ import json
 def buttons(request):
 	return JsonResponse({
 		'type': 'buttons',
-		'buttons': ["코스피", "코스닥"],
+		'buttons': ["코스피/코스닥 지수", "종목 검색"],
 		})
 
 
@@ -23,19 +23,25 @@ def buttons(request):
 def message(request):
 	json_str = ((request.body).decode('utf-8'))
 	json_data = json.loads(json_str)
-	market_name = json_data['content']
-	index = get_index(market_name)
+	menu = json_data['content']
+	index = get_index()
 
-
-	return JsonResponse({
-		'message': {
-			'text': market_name + '의' + '지수입니다: \n\n' + index
-			},
-		'keyboard': {
-			'type': 'buttons',
-			'buttons': ["코스피", "코스닥"]
-			}
-		})
+	if menu == "코스피/코스닥 지수":
+		return JsonResponse({
+			'message': {
+				'text':  'KOSPI의 지수입니다: \n\n' + index[0] + '\n\nKOSDAQ의 지수입니다: \n\n' + index[1]
+				},
+			'keyboard': {
+				'type': 'buttons',
+				'buttons': ["코스피/코스닥 지수", "종목 검색"]
+				}
+			})
+	else:
+		return JsonResponse({
+			'message': {
+				'text': '검색하고자 하는 회사명을 입력하세요'
+				}
+			})
 
 
 def scraper(request):
@@ -58,8 +64,11 @@ def create_index(market_name, index):
 		)
 
 
-def get_index(market_name):
+def get_index():
 	"""Return index of given market_name from DB"""
 
-	return Index.objects.get(market_name=market_name).index
+	kospi = Index.objects.get(market_name='코스피').index
+	kosdaq = Index.objects.get(market_name='코스닥').index
+
+	return [kospi, kosdaq]
 
