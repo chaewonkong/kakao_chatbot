@@ -1,5 +1,5 @@
 # Web scraper
-from apis.scraper import get_stock_index
+from apis.scraper import get_stock_index, get_stock_price
 from bs4 import BeautifulSoup
 import requests
 import time
