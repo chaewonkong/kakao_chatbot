@@ -48,7 +48,7 @@ def message(request):
 	else: # Return specific stock price and keyboard to users
 		return JsonResponse({
 			'message': {
-				'text': action + '의 현재가(종가) 입니다:\n\n' + index[0]
+				'text': action + '의 현재가(종가) 입니다:\n\n' + index[0] + ' 원(KRW)'
 				},
 			'keyboard':{
 				'type': 'buttons',
