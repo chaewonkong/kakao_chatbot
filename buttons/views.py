@@ -38,7 +38,7 @@ def message(request):
 				}
 			})
 
-	elif action == "종목 검색"
+	elif action == "종목 검색":
 		return JsonResponse({
 			'message': {
 				'text': '검색하고자 하는 회사명을 입력하세요'
