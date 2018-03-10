@@ -32,3 +32,7 @@ index[3] = 'KOSDAQ'
 index[4] = 'KOSDAQ 150'
 index[5] = 'KRX 300'
 """
+
+
+def get_stock_price(request):
+	return request
