@@ -44,13 +44,13 @@ def message(request):
 	elif action == "종목 검색":
 		return JsonResponse({
 			'message': {
-				'text': '검색하고자 하는 회사명을 입력하세요. \n\nex) NAVER\nex) 삼성전자\nex) CJ CGV'
+				'text': '검색하고자 하는 회사명을 입력하세요. \n\n대소문자와 띄어쓰기에 신경써주세요~ \nex) NAVER\nex) 삼성전자\nex) CJ CGV'
 				}
 			})
 
 	else: # Return specific stock price and keyboard to users
-		if get_corp_code(action):
-			code = get_corp_code(action)
+		code = get_corp_code(action)
+		if code:
 			return JsonResponse({
 				'message': {
 					'text': action + '(' + code + ')' + '의 현재가(종가) 입니다:\n\n    ' 
@@ -119,8 +119,15 @@ def get_index():
 
 def get_corp_code(request):
 	"""Return corporation code of given corporation name"""
+	
+	try:
+		code = Code.objects.get(corp_name=request).corp_code
+	
+	except:
+		return None
+	
+	else:
+		return code
 
-	code = Code.objects.get(corp_name=request).corp_code
 
-	return code
 
