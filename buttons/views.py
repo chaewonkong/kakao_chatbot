@@ -50,6 +50,7 @@ def message(request):
 
 	else: # Return specific stock price and keyboard to users
 		code = get_corp_code(action)
+		action = action.upper()
 		if code:
 			return JsonResponse({
 				'message': {
