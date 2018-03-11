@@ -53,8 +53,10 @@ def message(request):
 		if code:
 			return JsonResponse({
 				'message': {
-					'text': action + '의 현재가(종가) 입니다:\n\n\n' 
+					'text': action + '(' + code + ')' + '의 현재가(종가) 입니다:\n\n\n' 
 							+ get_stock_price(code) + ' 원(KRW)'
+							+ '\n\n 네이버금융에서 자세히 알아보기\n'
+							+ 'http://finance.naver.com/item/main.nhn?code=' + code
 					},
 				'keyboard':{
 					'type': 'buttons',
