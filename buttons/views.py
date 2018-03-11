@@ -31,9 +31,9 @@ def message(request):
 	if action == "코스피/코스닥 지수":
 		return JsonResponse({
 			'message': {
-				'text':  '#KOSPI의 지수 입니다: \n\n' + index[0] + 
-						'\n\n\n\n\n' +
-						'#KOSDAQ의 지수 입니다: \n\n' + index[1]
+				'text':  '#KOSPI의 지수 입니다: \n\n    ' + index[0] + 
+						'\n\n\n\n' +
+						'#KOSDAQ의 지수 입니다: \n\n    ' + index[1]
 				},
 			'keyboard': {
 				'type': 'buttons',
@@ -53,7 +53,7 @@ def message(request):
 		if code:
 			return JsonResponse({
 				'message': {
-					'text': action + '(' + code + ')' + '의 현재가(종가) 입니다:\n\n' 
+					'text': action + '(' + code + ')' + '의 현재가(종가) 입니다:\n\n    ' 
 							+ get_stock_price(code) + ' 원(KRW)'
 							+ '\n\n\n 네이버금융에서 자세히 알아보기\n'
 							+ 'http://finance.naver.com/item/main.nhn?code=' + code
