@@ -92,8 +92,8 @@ def create_code():
 
 		for row in reader:
 			Code.objects.create(
-				corp_name = row[0],
-				corp_code = row[1]
+				corp_name = row[1],
+				corp_code = row[0]
 				)
 
 
