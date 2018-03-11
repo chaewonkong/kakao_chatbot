@@ -119,7 +119,9 @@ def get_index():
 
 def get_corp_code(request):
 	"""Return corporation code of given corporation name"""
-	
+
+	request = request.upper()
+
 	try:
 		code = Code.objects.get(corp_name=request).corp_code
 	
