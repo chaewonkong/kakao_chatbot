@@ -11,4 +11,10 @@ class Index(models.Model):
 		return self.index
 
 
-		## 이유는 모르겠지만 DB에서 쿼리가 안됨.
+class Code(models.Model):
+	id = models.AutoField(primary_key=True)
+	corp_name = models.CharField(max_length=40, default="")
+	corp_code = models.CharField(max_length=30, default="")
+
+	def __str__(self):
+		return self.corp_name

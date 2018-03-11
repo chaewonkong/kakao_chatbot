@@ -33,12 +33,22 @@ index[4] = 'KOSDAQ 150'
 index[5] = 'KRX 300'
 """
 
-
 def get_stock_price(request):
-	""" Return Stock price of the requested company"""
+	""" Return Stock price of the requested company code"""
 
-	req =  #하필 쉬는날이네
+	headers = {"User-Agent": "Mozilla/5.0"}
+	req = requests.get('http://finance.naver.com/item/main.nhn?code='+request, headers=headers)
+	html = req.text
+	soup = BeautifulSoup(html, 'html.parser')
+	price = soup.findAll('span', {'class': 'blind'}) 
+	
 
-	pirce = ''
+	return price[21].get_text()
 
-	return price
+'''
+print(get_stock_price('035720')) # 카카오
+print(get_stock_price('000270')) # 기아차
+print(get_stock_price('035420')) # 네이버
+print(get_stock_price('005930')) # 삼성전자
+'''
+

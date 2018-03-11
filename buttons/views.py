@@ -1,11 +1,12 @@
 # Web scraper
 from apis.scraper import get_stock_index, get_stock_price
 from bs4 import BeautifulSoup
+import csv
 import requests
 import time
 
 # Django App
-from buttons.models import Index
+from buttons.models import Index, Code
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
@@ -60,28 +61,43 @@ def message(request):
 def scraper(request):
 	"""Delete existing DB and Create new DB"""
 	index_db = Index.objects.all()
+	code_db = Code.objects.all()
 	index_db.delete()
+	code_db.delete()
 
 	create_index('코스피', get_stock_index('코스피'))
 	create_index('코스닥', get_stock_index('코스닥'))
+	create_code()
 	time.sleep(3)
 
 	return HttpResponse("크롤링이 진행 중입니다~!!")
 
 
-def create_index(name, index):
+def create_index(market_name, index):
 	"""Create and save index with market_name in DB"""
 	Index.objects.create(
-		name = market_name,
+		market_name = market_name,
 		index = index
 		)
+
+
+def create_code():
+
+	with open('apis/data.csv') as datafile:
+		reader = csv.reader(datafile)
+
+		for row in reader:
+			Code.objects.create(
+				corp_name = row[0],
+				corp_code = row[1]
+				)
 
 
 def get_index():
 	"""Return index of given market_name from DB"""
 
-	kospi = Index.objects.get(name='코스피').index
-	kosdaq = Index.objects.get(name='코스닥').index
+	kospi = Index.objects.get(market_name='코스피').index
+	kosdaq = Index.objects.get(market_name='코스닥').index
 
 	return [kospi, kosdaq]
 
