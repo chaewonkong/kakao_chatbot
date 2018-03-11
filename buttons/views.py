@@ -44,7 +44,7 @@ def message(request):
 	elif action == "종목 검색":
 		return JsonResponse({
 			'message': {
-				'text': '검색하고자 하는 회사명을 입력하세요. \n\n대소문자와 띄어쓰기에 신경써주세요~ \nex) NAVER\nex) 삼성전자\nex) CJ CGV'
+				'text': '검색하고자 하는 회사명을 입력하세요. \n\n띄어쓰기에 신경써주세요~ \nex) NAVER\nex) 삼성전자\nex) CJ CGV'
 				}
 			})
 
@@ -68,7 +68,7 @@ def message(request):
 			return JsonResponse({
 				'message': {
 					'text': '죄송합니다. 종목 찾기에 실패했습니다.' + 
-						'\n\n종목명의 경우 띄어쓰기와 대소문자를 구분합니다.\n다시 한번 검색해주세요~!!'
+						'\n\n종목명의 경우 띄어쓰기를 구분합니다.\n다시 한번 검색해주세요~!!'
 					}
 
 				})
