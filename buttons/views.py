@@ -50,16 +50,25 @@ def message(request):
 
 	else: # Return specific stock price and keyboard to users
 		code = get_corp_code(action)
-		return JsonResponse({
-			'message': {
-				'text': action + '의 현재가(종가) 입니다:\n\n\n' 
-						+ get_stock_price(code) + ' 원(KRW)'
-				},
-			'keyboard':{
-				'type': 'buttons',
-				'buttons': ["코스피/코스닥 지수", "종목 검색"]
-				}
-			})
+		if code:
+			return JsonResponse({
+				'message': {
+					'text': action + '의 현재가(종가) 입니다:\n\n\n' 
+							+ get_stock_price(code) + ' 원(KRW)'
+					},
+				'keyboard':{
+					'type': 'buttons',
+					'buttons': ["코스피/코스닥 지수", "종목 검색"]
+					}
+				})
+		else:
+			return JsonResponse({
+				'message': {
+					'text': '죄송합니다. 종목 찾기에 실패했습니다.' + 
+						'\n\n종목명의 경우 띄어쓰기와 대소문자를 구분합니다.\n다시 한번 검색해주세요~!!'
+					}
+
+				})
 
 
 def scraper(request):
