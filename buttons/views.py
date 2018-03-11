@@ -32,7 +32,7 @@ def message(request):
 		return JsonResponse({
 			'message': {
 				'text':  '#KOSPI의 지수 입니다: \n\n\n' + index[0] + 
-						'\n\n\n\n-----------------------\n\n\n\n' +
+						'\n\n\n\n\n\n\n\n' +
 						'#KOSDAQ의 지수 입니다: \n\n\n' + index[1]
 				},
 			'keyboard': {
@@ -44,7 +44,7 @@ def message(request):
 	elif action == "종목 검색":
 		return JsonResponse({
 			'message': {
-				'text': '검색하고자 하는 회사명을 입력하세요'
+				'text': '검색하고자 하는 회사명을 입력하세요. \n\nex) NAVER\nex) 삼성전자\nex) CJ CGV'
 				}
 			})
 
