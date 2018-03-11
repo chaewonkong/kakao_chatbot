@@ -101,3 +101,11 @@ def get_index():
 
 	return [kospi, kosdaq]
 
+
+def get_corp_code(request):
+	"""Return corporation code of given corporation name"""
+
+	code = Code.objects.get(corp_name=request).corp_code
+
+	return code
+
