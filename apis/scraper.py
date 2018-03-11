@@ -23,16 +23,6 @@ def get_stock_index(request):
 	return index
 
 
-"""Offsets of each index
-
-index[0] = 'KTOP 30'
-index[1] = 'KOSPI'
-index[2] = 'KOSPI 200'
-index[3] = 'KOSDAQ'
-index[4] = 'KOSDAQ 150'
-index[5] = 'KRX 300'
-"""
-
 def get_stock_price(request):
 	""" Return Stock price of the requested company code"""
 
@@ -45,10 +35,5 @@ def get_stock_price(request):
 
 	return price[21].get_text()
 
-'''
-print(get_stock_price('035720')) # 카카오
-print(get_stock_price('000270')) # 기아차
-print(get_stock_price('035420')) # 네이버
-print(get_stock_price('005930')) # 삼성전자
-'''
+
 
