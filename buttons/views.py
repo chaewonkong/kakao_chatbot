@@ -49,7 +49,7 @@ def message(request):
 			})
 
 	else: # Return specific stock price and keyboard to users
-		if len(get_corp_code(action)) == 6:
+		if get_corp_code(action):
 			code = get_corp_code(action)
 			return JsonResponse({
 				'message': {
