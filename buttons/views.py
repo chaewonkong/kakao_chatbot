@@ -49,10 +49,10 @@ def message(request):
 			})
 
 	else: # Return specific stock price and keyboard to users
-		code = get_corp_code(request)
 		return JsonResponse({
+			code = get_corp_code(action)
 			'message': {
-				'text': action + '(' + code + ')' + '의 현재가(종가) 입니다:\n\n\n' 
+				'text': action + '의 현재가(종가) 입니다:\n\n\n' 
 						+ get_stock_price(code) + ' 원(KRW)'
 				},
 			'keyboard':{
