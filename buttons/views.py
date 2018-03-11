@@ -50,7 +50,7 @@ def message(request):
 
 	else: # Return specific stock price and keyboard to users
 		code = get_corp_code(action)
-		if code:
+		if len(code) == 6:
 			return JsonResponse({
 				'message': {
 					'text': action + '(' + code + ')' + '의 현재가(종가) 입니다:\n\n    ' 
