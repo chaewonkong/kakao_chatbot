@@ -26,12 +26,15 @@ def message(request):
 	json_data = json.loads(json_str)
 	action = json_data['content']
 	index = get_index()
+	code = get_corp_code(request)
+	price = get_stock_price(code)
 
 	if action == "코스피/코스닥 지수":
 		return JsonResponse({
 			'message': {
-				'text':  '#KOSPI의 지수 입니다: \n\n' + index[0] + '\n\n-----------------------\n\n'
-						'#KOSDAQ의 지수 입니다: \n\n' + index[1]
+				'text':  '#KOSPI의 지수 입니다: \n\n\n' + index[0] + 
+						'\n\n\n\n-----------------------\n\n\n\n' +
+						'#KOSDAQ의 지수 입니다: \n\n\n' + index[1]
 				},
 			'keyboard': {
 				'type': 'buttons',
@@ -49,7 +52,8 @@ def message(request):
 	else: # Return specific stock price and keyboard to users
 		return JsonResponse({
 			'message': {
-				'text': action + '의 현재가(종가) 입니다:\n\n' + index[0] + ' 원(KRW)'
+				'text': action + '(' + code + ')' + '의 현재가(종가) 입니다:\n\n\n' 
+						+ price + ' 원(KRW)'
 				},
 			'keyboard':{
 				'type': 'buttons',
