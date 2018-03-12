@@ -163,7 +163,9 @@ def get_generated_time():
 	
 	date = list(time.localtime())
 
-	if date[3] >= 3:
+	if date[3] >= 15:
 		return [date[1], date[2], 15, 0]
+	elif date[3] < 9:
+		return [date[1], date[2]-1, 15, 0]
 	else:
 		return date[1:5]
