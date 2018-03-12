@@ -62,14 +62,14 @@ def message(request):
 		else:
 			code = get_corp_code(action)
 		action = action.upper()
-		date = list(time.localtime())
+		date = get_generated_time()
 		
 		if code:
 			return JsonResponse({
 				'message': {
 					'text': action + '(' + code + ')' + '의 현재가(종가) 입니다:\n\n    ' 
 							+ get_stock_price(code) + ' 원(KRW)\n'
-							+ '    ({}월 {}일 {}시 {}분)'.format(date[1], date[2], date[3], date[4])
+							+ '    ({}월 {}일 {}시 {}분 기준)'.format(date[1], date[2], date[3], date[4])
 							+ '\n\n\n 네이버금융에서 자세히 알아보기\n'
 							+ 'http://finance.naver.com/item/main.nhn?code=' + code
 					},
@@ -158,4 +158,12 @@ def get_corp_name(request):
 	return Code.objects.get(corp_code=request).corp_name
 
 
+def get_generated_time():
+	"""Return time value when data generated"""
+	
+	date = list(time.localtime())
 
+	if date[3] >= 3:
+		return [date[1], date[2], 15, 0]
+	else:
+		return date
