@@ -85,16 +85,21 @@ def message(request):
 def scraper(request):
 	"""Delete existing DB and Create new DB"""
 	index_db = Index.objects.all()
-	code_db = Code.objects.all()
 	index_db.delete()
-	code_db.delete()
 
 	create_index('코스피', get_stock_index('코스피'))
 	create_index('코스닥', get_stock_index('코스닥'))
-	create_code()
 	time.sleep(3)
 
 	return HttpResponse("크롤링이 진행 중입니다~!!")
+
+
+def corp_code_scraper():
+	code_db = Code.objects.all()
+	code_db.delete()
+
+	create_code()
+
 
 
 def create_index(market_name, index):
