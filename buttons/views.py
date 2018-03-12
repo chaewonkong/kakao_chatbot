@@ -65,7 +65,7 @@ def message(request):
 				'message': {
 					'text': action + '(' + code + ')' + '의 현재가(종가) 입니다:\n\n    ' 
 							+ get_stock_price(code) + ' 원(KRW)\n'
-							+ '    ({}월 {}일 {}시 {}분'.format(date[1], date[2], date[3], date[4])
+							+ '    ({}월 {}일 {}시 {}분)'.format(date[1], date[2], date[3], date[4])
 							+ '\n\n\n 네이버금융에서 자세히 알아보기\n'
 							+ 'http://finance.naver.com/item/main.nhn?code=' + code
 					},
