@@ -58,6 +58,7 @@ def message(request):
 	else: # Return specific stock price and keyboard to users
 		if action.isdecimal():
 			code = action
+			action = get_corp_name(code)
 		else:
 			code = get_corp_code(action)
 		action = action.upper()
@@ -149,6 +150,12 @@ def get_corp_code(request):
 	
 	else:
 		return code
+
+
+def get_corp_name(request):
+	"""Return corporation name of given corporation code"""
+
+	return Code.objects.get(corp_code=request).corp_name
 
 
 
