@@ -56,7 +56,10 @@ def message(request):
 			})
 
 	else: # Return specific stock price and keyboard to users
-		code = get_corp_code(action)
+		if action.isdecimal():
+			code = action
+		else:
+			code = get_corp_code(action)
 		action = action.upper()
 		date = list(time.localtime())
 		
