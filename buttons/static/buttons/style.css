@@ -37,9 +37,34 @@ a.menu { margin-left: 10px; }
 
 
 div.bg {	
-			height: 600px;
+			height: 1000px;
 			background: white url("images/bg_books.jpg") no-repeat;
 }
+
+
+p.img_main {
+		/*font-style: italic;*/
+		width: 1000px;
+		color: #f2f2f2;
+		font-size: 54px;
+		padding-top: 650px;
+		letter-spacing: 5px;
+		font-weight: bold;
+		text-shadow: 1px 1px 20px #2c2c2d;
+
+}
+
+
+p.img_sub {
+		width: 1000px;
+		color: #f2f2f2;
+		font-size: 24px;
+		padding-top: 15px;
+		letter-spacing: 2px;
+		font-weight: bold;
+		text-shadow: 1px 1px 5px #2c2c2d;
+}
+
 
 
 a { text-decoration: none;}
@@ -68,7 +93,10 @@ p {
 p.hidden {
 	margin: 150 0 150 0;
 	color: white;
+	font-size: 24px;
+	letter-spacing: 2px
 }
+
 
 p.bold {
 		font-weight: bold;
