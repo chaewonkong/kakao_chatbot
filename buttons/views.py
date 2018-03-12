@@ -58,12 +58,14 @@ def message(request):
 	else: # Return specific stock price and keyboard to users
 		code = get_corp_code(action)
 		action = action.upper()
+		date = list(time.localtime())
 		
 		if code:
 			return JsonResponse({
 				'message': {
 					'text': action + '(' + code + ')' + '의 현재가(종가) 입니다:\n\n    ' 
-							+ get_stock_price(code) + ' 원(KRW)'
+							+ get_stock_price(code) + ' 원(KRW)\n'
+							+ '    ({}월 {}일 {}시 {}분'.format(time[1], time[2], time[3], time[4])
 							+ '\n\n\n 네이버금융에서 자세히 알아보기\n'
 							+ 'http://finance.naver.com/item/main.nhn?code=' + code
 					},
