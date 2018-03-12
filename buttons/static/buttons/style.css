@@ -1,0 +1,92 @@
+
+
+/*Top Menu Section*/
+div.top {	
+			width: 100%;
+			height: 60px;
+			position: fixed;
+			top: 0;
+			background-color: white;
+			
+}
+
+
+div.tab {
+			margin: 10 auto 10 auto;
+			width: 1000px;
+}
+
+
+
+span.title {
+			/*margin-top: 10px*/
+			font-family: "맑은 고딕";
+			color: #4e57ac;
+			font-size: 40px;
+			letter-spacing: 5px;
+}
+
+
+span.menu {
+			float: right;
+			margin-top: 10px;
+			font-family: "helvetica-neue";
+			font-size: 24px;	
+}
+
+
+a.menu { margin-left: 10px; }
+
+
+div.bg {	
+			height: 600px;
+			background: white url("images/bg_books.jpg") no-repeat;
+}
+
+
+a { text-decoration: none;}
+a:link, a:visited { color: #4e57ac; }
+a:hover{ color: #4e80ac;}
+
+
+
+/*Body Text Section*/
+div.content {
+			width: 1000px;
+			height: 650px;
+			margin: 0 auto;
+}
+
+
+p {
+			/*margin-top: 100px;*/
+			line-height: 1.5;
+			font-family: "맑은 고딕";
+			font-size: 18px;
+			text-align: justify;
+			margin: 0 auto; 
+		}
+
+p.hidden {
+	margin: 150 0 150 0;
+	color: white;
+}
+
+
+h1 { 
+		font-family: '맑은 고딕'; 
+		font-size: 24px;
+		color: black;
+		letter-spacing: 2px;
+		margin: 0 0 20 0;
+}
+
+
+p.footer { 
+	font-family: "helvetica-neue";
+	font-size: 15px;
+	margin-bottom: 30px;
+	text-align: center;
+ }
+
+

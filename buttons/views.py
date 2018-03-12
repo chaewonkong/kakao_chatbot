@@ -10,7 +10,14 @@ from buttons.models import Index, Code
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
+from django.template import loader
 import json
+
+
+def index(request):
+	template = loader.get_template('buttons/index.html')
+
+	return HttpResponse(template.render())
 
 
 def buttons(request):
