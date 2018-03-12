@@ -60,7 +60,7 @@ p {
 			/*margin-top: 100px;*/
 			line-height: 1.5;
 			font-family: "맑은 고딕";
-			font-size: 18px;
+			font-size: 24px;
 			text-align: justify;
 			margin: 0 auto; 
 		}
@@ -70,19 +70,34 @@ p.hidden {
 	color: white;
 }
 
+p.bold {
+		font-weight: bold;
+		font-size: 24px;
+		line-height: 1.5;
+		margin: 40px 0 5px 0;
+}
+
 
 h1 { 
 		font-family: '맑은 고딕'; 
-		font-size: 24px;
+		font-size: 40px;
 		color: black;
 		letter-spacing: 2px;
-		margin: 0 0 20 0;
+		margin: 0 0 40 0;
+}
+
+
+li { 
+	font-family: "맑은 고딕";
+	font-size: 24px;
+	line-height: 1.5;
+
 }
 
 
 p.footer { 
 	font-family: "helvetica-neue";
-	font-size: 15px;
+	font-size: 20px;
 	margin-bottom: 30px;
 	text-align: center;
  }
