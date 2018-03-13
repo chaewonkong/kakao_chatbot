@@ -1,5 +1,6 @@
 # Web scraper
 from apis.price_scraper import get_stock_price
+from apis import index_scraper
 from bs4 import BeautifulSoup
 import requests
 import time
@@ -56,6 +57,15 @@ def message(request):
 
 	else: # Post stock price and time to user
 		return JsonResponse(get_price_message(action))
+
+
+def index_scraper():
+	index_scraper.scraper()
+	time.sleep()
+
+	return HttpResponse("스크레이핑이 정상 진행됩니다")
+
+
 
 
 def get_index():

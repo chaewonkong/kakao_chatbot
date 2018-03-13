@@ -23,4 +23,5 @@ urlpatterns = [
     path('', views.index),
     path('keyboard/', views.buttons),
     path('message', views.message),
+    path('scraper/' views.index_scraper),
 ]
