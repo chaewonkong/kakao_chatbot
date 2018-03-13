@@ -1,8 +1,6 @@
 # Web scraper
-from apis.index_scraper import get_stock_index
 from apis.price_scraper import get_stock_price
 from bs4 import BeautifulSoup
-import csv
 import requests
 import time
 
@@ -57,7 +55,7 @@ def message(request):
 			})
 
 	else: # Post stock price and time to user
-		return JsonResponse(post_stock_price(action))
+		return JsonResponse(get_price_message(action))
 
 
 def get_index():
@@ -108,8 +106,10 @@ def get_generated_time():
 		return date[1:5]
 
 
-def post_stock_price(action):
+def get_price_message(action):
 	"""Post requested company's stock price as message to user"""
+
+	date = get_generated_time()
 
 	if action.isdecimal():
 		code = action
@@ -117,8 +117,6 @@ def post_stock_price(action):
 	else:
 		code = get_corp_code(action)
 		action = action.upper()
-	
-	date = get_generated_time()
 		
 	if code:
 		return {
@@ -140,7 +138,6 @@ def post_stock_price(action):
 					'text': '죄송합니다. 종목 찾기에 실패했습니다.' + 
 							'\n\n종목명의 경우 한글/영어와 띄어쓰기를 구분합니다.\n다시 한번 검색해주세요~!!'
 					}
-
 				}
 
 
