@@ -5,7 +5,7 @@ Scrape and return KOSPI and KOSDAQ INDEX of Korean Stock Market"""
 from bs4 import BeautifulSoup
 import requests
 
-from buttons.models import Index, Code
+from ..buttons.models import Index, Code
 from django.http import HttpResponse
 
 
