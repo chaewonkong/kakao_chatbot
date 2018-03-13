@@ -156,7 +156,8 @@ def post_stock_price(action):
 	else:
 		code = get_corp_code(action)
 		action = action.upper()
-		date = get_generated_time()
+	
+	date = get_generated_time()
 		
 	if code:
 		return {
