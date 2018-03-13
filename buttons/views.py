@@ -56,7 +56,7 @@ def message(request):
 			})
 
 	else: # Post stock price and time to user
-		post_stock_price(request)
+		post_stock_price(action)
 
 
 def scraper(request):
@@ -142,7 +142,7 @@ def get_generated_time():
 		return date[1:5]
 
 
-def post_stock_price(request):
+def post_stock_price(action):
 	"""Post requested company's stock price as message to user"""
 
 	if action.isdecimal():
