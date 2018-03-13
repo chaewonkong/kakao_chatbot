@@ -126,7 +126,12 @@ def get_corp_code(request):
 def get_corp_name(request):
 	"""Return corporation name of given corporation code"""
 
-	return Code.objects.get(corp_code=request).corp_name
+	try:
+		name = Code.objects.get(corp_code=request).corp_name
+	except:
+		return None
+	else:
+		return name
 
 
 def get_generated_time():
