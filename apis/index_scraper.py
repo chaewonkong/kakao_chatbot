@@ -5,7 +5,7 @@ Scrape and return KOSPI and KOSDAQ INDEX of Korean Stock Market"""
 from bs4 import BeautifulSoup
 import requests
 
-from buttons.models import Index
+from .models import Index
 
 
 def get_stock_index(request):
