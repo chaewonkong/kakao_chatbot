@@ -67,8 +67,9 @@ def create_index(market_name, index):
 		)
 
 
-def scraper():
+def scraper(request):
 	"""Delete existing DB and Create new DB"""
+	
 	index_db = Index.objects.all()
 	index_db.delete()
 
