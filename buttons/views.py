@@ -142,10 +142,8 @@ def get_generated_time():
 		return date[1:5]
 
 
-def post_stock_price(request):
+def post_stock_price(action):
 	"""Post requested company's stock price as message to user"""
-
-	action = request
 
 	if action.isdecimal():
 		code = action
@@ -169,11 +167,11 @@ def post_stock_price(request):
 					'buttons': ["코스피/코스닥 지수", "종목 검색"]
 					}
 				})
-		else:
-			return JsonResponse({
-				'message': {
+	else:
+		return JsonResponse({
+			'message': {
 					'text': '죄송합니다. 종목 찾기에 실패했습니다.' + 
-						'\n\n종목명의 경우 한글/영어와 띄어쓰기를 구분합니다.\n다시 한번 검색해주세요~!!'
+							'\n\n종목명의 경우 한글/영어와 띄어쓰기를 구분합니다.\n다시 한번 검색해주세요~!!'
 					}
 
 				})
