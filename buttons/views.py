@@ -56,7 +56,7 @@ def message(request):
 			})
 
 	else: # Post stock price and time to user
-		post_stock_price(action)
+		return post_stock_price(action)
 
 
 def scraper(request):
