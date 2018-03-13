@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 import requests
 
 
-def get_stock_index(request):
+def get_stock_index():
 	"""Return requested KOSPI/KOSDAQ Index by scraping from KRX.co.kr"""
 
 	headers = {"User-Agent": "Mozilla/5.0"}
@@ -15,9 +15,8 @@ def get_stock_index(request):
 	soup = BeautifulSoup(html, "html.parser")
 	index = soup.findAll("span", {"class": "index-price"})
 
-	if request == '코스피':
-		index = index[1].get_text()
-	else:
-		index = index[3].get_text()
+	
+	kospi = index[1].get_text()
+	kosdaq = index[3].get_text()
 
-	return index
+	return [kospi, kosdaq]

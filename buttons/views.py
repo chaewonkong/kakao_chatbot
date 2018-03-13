@@ -32,7 +32,7 @@ def message(request):
 	json_str = ((request.body).decode('utf-8'))
 	json_data = json.loads(json_str)
 	action = json_data['content']
-	index = get_index()
+	index = get_stock_index()
 	#price = get_stock_price(get_corp_code(request))
 
 	if action == "코스피/코스닥 지수":
@@ -65,31 +65,6 @@ def create_index(market_name, index):
 		market_name = market_name,
 		index = index
 		)
-
-
-def scraper(request):
-	"""Delete existing DB and Create new DB"""
-	
-	index_db = Index.objects.all()
-	index_db.delete()
-
-	create_index('코스피', get_stock_index('코스피'))
-	create_index('코스닥', get_stock_index('코스닥'))
-
-	time.sleep(3)
-
-	return HttpResponse("스크레이핑이 정상 진행됩니다~")
-
-
-
-
-def get_index():
-	"""Return index of given market_name from DB"""
-
-	kospi = Index.objects.get(market_name='코스피').index
-	kosdaq = Index.objects.get(market_name='코스닥').index
-
-	return [kospi, kosdaq]
 
 
 def get_corp_code(request):
