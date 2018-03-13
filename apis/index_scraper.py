@@ -45,3 +45,4 @@ def scraper():
 
 # Run scraper
 scraper()
+import sys; print sys.version;
