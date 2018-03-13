@@ -3,6 +3,7 @@ from buttons.models import Code
 import csv
 
 
+
 def corp_code_scraper():
 	code_db = Code.objects.all()
 	code_db.delete()

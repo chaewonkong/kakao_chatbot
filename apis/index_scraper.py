@@ -5,19 +5,7 @@ Scrape and return KOSPI and KOSDAQ INDEX of Korean Stock Market"""
 from bs4 import BeautifulSoup
 import requests
 
-from django.http import HttpResponse
-from django.db import models
-
-
-class Index(models.Model):
-	"""Store KOSPI and KOSDAQ Index to DB"""
-
-	id = models.AutoField(primary_key=True)
-	market_name = models.CharField(max_length=30, default="")
-	index = models.CharField(max_length=50, default="")
-
-	def __str__(self):
-		return self.index
+from buttons.models import Index
 
 
 def get_stock_index(request):
