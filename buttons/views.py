@@ -56,7 +56,7 @@ def message(request):
 			})
 
 	else: # Post stock price and time to user
-		return post_stock_price(action)
+		return JsonResponse(post_stock_price(action))
 
 
 def scraper(request):
@@ -154,7 +154,7 @@ def post_stock_price(action):
 		date = get_generated_time()
 		
 	if code:
-		return JsonResponse({
+		return {
 			'message': {
 					'text': action + '(' + code + ')' + '의 현재가(종가) 입니다:\n\n    ' 
 							+ get_stock_price(code) + ' 원(KRW)\n'
@@ -166,14 +166,14 @@ def post_stock_price(action):
 					'type': 'buttons',
 					'buttons': ["코스피/코스닥 지수", "종목 검색"]
 					}
-				})
+				}
 	else:
-		return JsonResponse({
+		return {
 			'message': {
 					'text': '죄송합니다. 종목 찾기에 실패했습니다.' + 
 							'\n\n종목명의 경우 한글/영어와 띄어쓰기를 구분합니다.\n다시 한번 검색해주세요~!!'
 					}
 
-				})
+				}
 
 
