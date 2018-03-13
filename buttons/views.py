@@ -142,27 +142,29 @@ def get_generated_time():
 		return date[1:5]
 
 
-def post_stock_price(action):
+def post_stock_price(request):
 	"""Post requested company's stock price as message to user"""
 
+	action = request
+
 	if action.isdecimal():
-			code = action
-			action = get_corp_name(code)
-		else:
-			code = get_corp_code(action)
+		code = action
+		action = get_corp_name(code)
+	else:
+		code = get_corp_code(action)
 		action = action.upper()
 		date = get_generated_time()
 		
-		if code:
-			return JsonResponse({
-				'message': {
+	if code:
+		return JsonResponse({
+			'message': {
 					'text': action + '(' + code + ')' + '의 현재가(종가) 입니다:\n\n    ' 
 							+ get_stock_price(code) + ' 원(KRW)\n'
 							+ '    ({}월 {}일 {}시 {}분 기준)'.format(date[0], date[1], date[2], date[3])
 							+ '\n\n\n 네이버금융에서 자세히 알아보기\n'
 							+ 'http://finance.naver.com/item/main.nhn?code=' + code
 					},
-				'keyboard':{
+			'keyboard':{
 					'type': 'buttons',
 					'buttons': ["코스피/코스닥 지수", "종목 검색"]
 					}
