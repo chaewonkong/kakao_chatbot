@@ -43,4 +43,5 @@ def scraper():
 	create_index('코스피', get_stock_index('코스피'))
 	create_index('코스닥', get_stock_index('코스닥'))
 
+# Run scraper
 scraper()
