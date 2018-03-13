@@ -5,8 +5,6 @@ Scrape and return KOSPI and KOSDAQ INDEX of Korean Stock Market"""
 from bs4 import BeautifulSoup
 import requests
 
-from buttons.models import Index
-
 
 def get_stock_index(request):
 	"""Return requested KOSPI/KOSDAQ Index by scraping from KRX.co.kr"""
@@ -23,21 +21,3 @@ def get_stock_index(request):
 		index = index[3].get_text()
 
 	return index
-
-
-# Index Scraping
-def create_index(market_name, index):
-	"""Create and save index with market_name in DB"""
-	Index.objects.create(
-		market_name = market_name,
-		index = index
-		)
-
-
-def scraper():
-	"""Delete existing DB and Create new DB"""
-	index_db = Index.objects.all()
-	index_db.delete()
-
-	create_index('코스피', get_stock_index('코스피'))
-	create_index('코스닥', get_stock_index('코스닥'))

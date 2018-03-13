@@ -1,6 +1,6 @@
 # Web scraper
 from apis.price_scraper import get_stock_price
-from apis import index_scraper
+from apis.index_scraper import get_stock_index
 from bs4 import BeautifulSoup
 import requests
 import time
@@ -60,10 +60,27 @@ def message(request):
 
 
 def scraper():
-	index_scraper.scraper()
+	run_scraper()
 	time.sleep()
 
 	return HttpResponse("스크레이핑이 정상 진행됩니다")
+
+
+def create_index(market_name, index):
+	"""Create and save index with market_name in DB"""
+	Index.objects.create(
+		market_name = market_name,
+		index = index
+		)
+
+
+def run_scraper():
+	"""Delete existing DB and Create new DB"""
+	index_db = Index.objects.all()
+	index_db.delete()
+
+	create_index('코스피', get_stock_index('코스피'))
+	create_index('코스닥', get_stock_index('코스닥'))
 
 
 
