@@ -59,7 +59,7 @@ def message(request):
 		return JsonResponse(get_price_message(action))
 
 
-def index_scraper():
+def scraper():
 	index_scraper.scraper()
 	time.sleep()
 
