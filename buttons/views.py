@@ -33,7 +33,6 @@ def message(request):
 	json_data = json.loads(json_str)
 	action = json_data['content']
 	index = get_stock_index()
-	#price = get_stock_price(get_corp_code(request))
 
 	if action == "코스피/코스닥 지수":
 		return JsonResponse({
@@ -58,13 +57,6 @@ def message(request):
 	else: # Post stock price and time to user
 		return JsonResponse(get_price_message(action))
 
-
-def create_index(market_name, index):
-	"""Create and save index with market_name in DB"""
-	Index.objects.create(
-		market_name = market_name,
-		index = index
-		)
 
 
 def get_corp_code(request):
