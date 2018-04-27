@@ -21,6 +21,4 @@ from buttons import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index),
-    path('keyboard/', views.buttons),
-    path('message', views.message),
 ]
